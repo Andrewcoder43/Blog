@@ -1,9 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
-import './Home.scss';
 import './App.css';
 
 // Sample data for trending articles and latest posts
@@ -15,31 +11,31 @@ const trendingArticles = [
         author: "Andrew Hollas",
         post: "Explore how vertical gardens are transforming urban spaces, providing fresh produce and improving air quality in cities.",
         date: "2024-10-05"
-    },
-    {
+        },
+        {
         id: 2,
         title: "Solar-Powered Transportation Revolution",
         image: "image/beach.jpg",
         author: "Andrew Hollas",
         post: "Discover the latest innovations in solar-powered vehicles and how they're reshaping the future of transportation.",
         date: "2024-10-07"
-    },
-    {
+        },
+        {
         id: 3,
         title: "Eco-Friendly Architecture Innovations",
         image: "image/beach.jpg",
         author: "Andrew Hollas",
         post: "Learn about cutting-edge sustainable architecture practices that are redefining how we design and construct buildings.",
         date: "2024-10-08"
-    },
-    {
+        },
+        {
         id: 4,
         title: "Community-Led Renewable Energy Projects",
         image: "image/beach.jpg",
         author: "Andrew Hollas",
         post: "See how local communities are taking charge of their energy future with innovative renewable energy initiatives.",
         date: "2024-10-09"
-    }
+        }        
 ];
 
 const latestPosts = [
@@ -78,37 +74,10 @@ const latestPosts = [
 ];
 
 
-const carouselImages = [
-    { id: 1, src: 'image/beach.png', alt: 'Solarpunk Beach' },
-    { id: 2, src: 'image/beach.png', alt: 'Solarpunk City' },
-    { id: 3, src: 'image/beach.png', alt: 'Solarpunk Garden' },
-    { id: 4, src: 'image/beach.png', alt: 'Solarpunk Transport' },
-    { id: 5, src: 'image/beach.png', alt: 'Solarpunk Energy' },
-    { id: 6, src: 'image/beach.png', alt: 'Solarpunk Architecture' },
-    { id: 7, src: 'image/beach.png', alt: 'Solarpunk Community' },
-    { id: 8, src: 'image/beach.png', alt: 'Solarpunk Technology' },
-    { id: 9, src: 'image/beach.png', alt: 'Solarpunk Fashion' },
-    { id: 10, src: 'image/beach.png', alt: 'Solarpunk Future' },
-];
-
-
 
 const Home = () => {
     return (
         <div className="home-container">
-            <section className="carousel-section">
-                <h2>Solarpunk Showcase</h2>
-                <OwlCarousel className="owl-theme" loop margin={10} nav>
-                    {carouselImages.map(image => (
-                        <div key={image.id} className="item">
-                            <img src={image.src} alt={image.alt} />
-                        </div>
-                    ))}
-                </OwlCarousel>
-            </section>
-
-
-
             <section className="trending-section">
                 <h2>Trending</h2>
                 <div className="trending-articles">
@@ -127,7 +96,7 @@ const Home = () => {
                     ))}
                 </div>
             </section>
-
+    
             <section className="latest-posts-section">
                 <h2>Latest Posts</h2>
                 <div className="latest-posts">
@@ -149,7 +118,7 @@ const Home = () => {
         </div>
     );
 };
-
-
+    
+    
 
 export default Home;
