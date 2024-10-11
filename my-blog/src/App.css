@@ -1,0 +1,550 @@
+
+:root {
+  --solarpunk-green: #7FBD32;     /* Keep this vibrant green */
+  --solarpunk-blue: #3CBCC3;      /* Keep this turquoise blue */
+  --solarpunk-yellow: #EBA63F;    /* Keep this warm yellow */
+  --solarpunk-orange: #E67E22;    /* Soften the orange slightly */
+  --solarpunk-bg: #F2F7F2;        /* Keep this light background */
+  --solarpunk-dark: #2C5530;      /* Keep this dark green */
+  --solarpunk-light: #D1E8E2;     /* Keep this light teal */
+  --solarpunk-earth: #8D6E63;     /* Add an earthy brown */
+  --solarpunk-sky: #87CEEB;       /* Add a sky blue */
+}
+
+
+body {
+  background-color: var(--solarpunk-bg);
+  color: #333;
+  font-family: 'Arial', sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.solarpunk-nav {
+  background-color: var(--solarpunk-green);
+  padding: 1rem 0;
+}
+
+.solarpunk-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.solarpunk-nav li {
+  margin: 0 1rem;
+}
+
+.solarpunk-nav a {
+  color: var(--solarpunk-bg);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.solarpunk-nav a:hover {
+  color: var(--solarpunk-yellow);
+  
+}
+
+.solarpunk-main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2{
+  color: var(--solarpunk-blue);
+  text-align: left; /* Aligns the text to the left */
+}
+
+h2 {
+  position: relative; /* Positioning context for the pseudo-element */
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 760px; /* Adjust the width as needed */
+  height: 3px; /* Adjust the height as needed */
+  background-color: var(--solarpunk-blue); /* Use your desired color */
+  margin-top: 5px; /* Space between the text and the line */
+  left: 0; /* Aligns to the left of the header */
+}
+
+h3 {
+  color: var(--solarpunk-blue);
+  text-align: center; /* Aligns the text to the left */
+}
+
+button {
+  background-color: var(--solarpunk-yellow);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--solarpunk-orange);
+}
+
+
+
+
+/* Home.css */
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+
+
+
+
+
+/* Trending Articles Section */
+.trending-section {
+  margin-bottom: 40px;
+}
+
+.trending-section h2 {
+  color: var(--solarpunk-dark);
+  margin-bottom: 20px;
+}
+
+.trending-articles {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.trending-article {
+  flex: 0 0 auto;
+  width: 23%;
+  margin-right: 2%;
+  background-color: var(--solarpunk-light);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 350px; /* Set a fixed height */
+}
+
+.trending-article:hover {
+  transform: translateY(-5px);
+}
+
+.trending-article img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.trending-article h3 {
+  padding: 10px;
+  font-size: 1rem;
+  color: var(--solarpunk-dark);
+  flex-grow: 1; /* Allow title to grow and push "Read More" to bottom */
+
+}
+
+.article-info {
+  padding: 0 10px;
+}
+
+.trending-article a {
+  display: block;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--solarpunk-blue);
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-top: auto; /* Push to bottom */
+}
+
+.trending-article a:hover {
+  background-color: var(--solarpunk-green);
+}
+
+
+
+
+
+
+/* Latest Posts Section */
+.latest-posts-section {
+  margin: 2rem 0;
+}
+
+.latest-posts-section h2 {
+  color: var(--solarpunk-dark);
+  margin-bottom: 20px;
+}
+
+.latest-posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.latest-post {
+  background-color: var(--solarpunk-bg);
+  border-left: 4px solid var(--solarpunk-green);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.latest-post:hover {
+  transform: translateX(5px);
+}
+
+.latest-post img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.post-content {
+  padding: 15px;
+}
+
+.latest-post h3 {
+  color: var(--solarpunk-dark);
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.post-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.post-info .category {
+  font-weight: bold;
+}
+
+.latest-post a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #000000;
+  padding: 8px 15px; /* Add some padding */
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .latest-posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .latest-posts {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* Blog Posts Section */
+
+.blog-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.blog-header {
+  text-align: center;
+  margin-bottom: 10px; /* Adjust margin as needed */
+  font-size: 2.5em;
+  color: #333;
+}
+
+.underline {
+  width: 100%;
+  height: 4px; /* Thickness of the underline */
+  background-color: #10c0c0; /* Change this to match your latest post section's underline color */
+  margin: 0 auto; /* Center the underline */
+}
+
+
+.blog-thumbnails-container {
+  margin: 2rem 0;
+}
+
+.blog-thumbnails-container h2 {
+  color: var(--solarpunk-dark);
+  margin-bottom: 20px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.blog-thumbnail {
+  background-color: var(--solarpunk-bg);
+  border-left: 4px solid var(--solarpunk-green);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.blog-thumbnail:hover {
+  transform: translateX(5px);
+}
+
+.blog-thumbnail img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.blog-thumbnail h3 {
+  color: var(--solarpunk-dark);
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+  padding: 15px 15px 0;
+}
+
+
+
+/* read more button */
+.post-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--solarpunk-dark);
+  margin-bottom: 10px;
+  padding: 0 15px;
+}
+
+.post-excerpt {
+  padding: 0 15px 15px;
+  font-size: 0.95rem;
+  color: var(--solarpunk-dark);
+}
+
+.blog-thumbnail a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 15px 15px;
+}
+
+.category-button {
+  padding: 8px 12px;
+  background-color: #2ecc71;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.category-button:hover {
+  background-color: #27ae60;
+}
+
+.read-more-button {
+  padding: 8px 15px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.pagination button {
+  background-color: var(--solarpunk-yellow);
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: var(--solarpunk-orange);
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+
+}
+
+.pagination span {
+  font-size: 1em;
+  color: var(--solarpunk-dark);
+}
+
+@media (max-width: 768px) {
+  .latest-posts, .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .latest-posts, .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+.blog-article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.blog-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.post-info {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.author {
+  font-weight: bold;
+}
+
+.separator {
+  margin: 0 5px;
+}
+
+.blog-content {
+  line-height: 1.6;
+}
+
+
+
+
+
+
+
+
+.comment-section {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #e6f2e6; /* Light green background */
+  border-radius: 8px;
+  border: 2px solid #4caf50; /* Green border */
+}
+
+.comment-section h3 {
+  margin-bottom: 15px;
+  color: #2e7d32; /* Dark green text */
+}
+
+.comment-section form {
+  margin-bottom: 20px;
+}
+
+.comment-section textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #81c784; /* Light green border */
+  border-radius: 4px;
+  background-color: #f1f8e9; /* Very light green background */
+}
+
+.comment-section button {
+  padding: 10px 15px;
+  background-color: #fbc02d; /* Warm yellow */
+  color: #33691e; /* Dark green text */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.comment-section button:hover {
+  background-color: #f9a825; /* Slightly darker yellow on hover */
+}
+
+.comments-list .comment {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #c8e6c9; /* Light green background */
+  border: 1px solid #66bb6a; /* Medium green border */
+  border-radius: 4px;
+}
+
+.comments-list .comment p {
+  margin-bottom: 5px;
+  color: #1b5e20; /* Dark green text */
+}
+
+.comments-list .comment small {
+  color: #33691e; /* Dark green text for author */
+}
+
