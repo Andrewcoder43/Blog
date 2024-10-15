@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { BlogContext } from './BlogProvider';
 import CommentSection from './CommentSection';
-import SimilarArticles from './SimilarArticles.js';
+import SimilarArticles from './SimilarArticles';
+
 
 const BlogArticle = () => {
     const { id } = useParams();
@@ -14,6 +15,7 @@ const BlogArticle = () => {
     const blog = blogs.find(blog => blog.id === parseInt(id));
 
     if (!blog) return <div>Blog not found</div>;
+    console.log('Blogs in BlogArticle:', blogs);
 
     return (
         <article className="blog-article">
@@ -26,6 +28,8 @@ const BlogArticle = () => {
             </p>
             <div dangerouslySetInnerHTML={{ __html: blog.post }} />
             <CommentSection blogId={blog.id} />
+            console.log('Current Blog ID:', blog.id);
+<SimilarArticles currentBlogId={blog.id} />
             <SimilarArticles currentBlogId={blog.id} />
         </article>
     );
