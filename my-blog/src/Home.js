@@ -85,11 +85,11 @@ const Home = () => {
                             <img src={article.image} alt={article.title} />
                             <h3>{article.title}</h3>
                             <p className="article-info">
-                                <span className="category">{article.category}</span>
                                 <span className="author">{article.author}</span>
-                                <span className="separator"> - </span> {/* Added separator here */}
+                                <span className="separator"> - </span>
                                 <span className="date">{article.date}</span>
                             </p>
+                            <p className="article-excerpt">{article.post.substring(0, 100)}...</p>
                             <Link to={`/blog/${article.id}`}>Read More</Link>
                         </div>
                     ))}
@@ -108,6 +108,7 @@ const Home = () => {
                                     <span className="category">{post.category}</span>
                                     <span className="date">Published on: {post.date}</span>
                                 </p>
+                                <p className="post-excerpt">{post.post.substring(0, 100)}...</p>
                                 <Link to={`/blog/${post.id}`}>Read More</Link>
                             </div>
                         </div>
@@ -117,7 +118,5 @@ const Home = () => {
         </div>
     );
 };
-    
-    
 
 export default Home;
