@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { BlogContext } from './BlogProvider';
 import CommentSection from './CommentSection';
+import SimilarArticles from './SimilarArticles.js';
 
 const BlogArticle = () => {
     const { id } = useParams();
@@ -25,6 +26,7 @@ const BlogArticle = () => {
             </p>
             <div dangerouslySetInnerHTML={{ __html: blog.post }} />
             <CommentSection blogId={blog.id} />
+            <SimilarArticles currentBlogId={blog.id} />
         </article>
     );
 };
