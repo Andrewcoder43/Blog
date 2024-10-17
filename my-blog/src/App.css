@@ -1,21 +1,23 @@
 
 :root {
-  --brutalist-green: #00FF00;
-  --brutalist-blue: #00FFFF;
-  --brutalist-yellow: #FFFF00;
-  --brutalist-orange: #FF6600;
-  --brutalist-bg: #FFFFFF;
-  --brutalist-dark: #000000;
-  --brutalist-light: #CCCCCC;
-  --brutalist-earth: #996633;
-  --brutalist-sky: #87CEEB;
+  --solarpunk-green: #7FFF00;
+  --solarpunk-blue: #00CED1;
+  --solarpunk-yellow: #FFD700;
+  --solarpunk-orange: #FFA500;
+  --solarpunk-bg: #F0F8FF;
+  --solarpunk-dark: #2F4F4F;
+  --solarpunk-light: #E0FFFF;
+  --solarpunk-earth: #8B4513;
+  --solarpunk-sky: #87CEEB;
+  --neobrutalist-bg: #333;
+  --neobrutalist-dark: #444;
+  --neobrutalist-light: #555;
 }
-
 
 body {
   font-family: 'Courier New', monospace;
-  background-color: var(--brutalist-bg);
-  color: var(--brutalist-dark);
+  background-color: var(--neobrutalist-bg);
+  color: var(--solarpunk-light);
 }
 
 .App {
@@ -25,6 +27,7 @@ body {
 .solarpunk-nav {
   background-color: var(--solarpunk-green);
   padding: 1rem 0;
+  border-bottom: 4px solid var(--neobrutalist-dark);
 }
 
 .solarpunk-nav ul {
@@ -49,21 +52,22 @@ body {
 
 .solarpunk-nav a:hover {
   color: var(--solarpunk-yellow);
-  
 }
 
 .solarpunk-main {
   max-width: 100%;
   margin: 0;
   padding: 2rem;
-  background-color: var(--brutalist-bg);
-  border: 4px solid var(--brutalist-dark);
+  background-color: var(--neobrutalist-bg);
+  border: 4px solid var(--neobrutalist-dark);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2, h3 {
   text-transform: uppercase;
   font-weight: bold;
-  border-bottom: 4px solid var(--brutalist-dark);
+  border-bottom: 4px solid var(--neobrutalist-dark);
 }
 
 h1 {
@@ -74,7 +78,7 @@ h1 {
 
 h2 {
   font-size: 2.5rem;
-  color: var(--brutalist-blue);
+  color: var(--solarpunk-green);
   position: relative;
 }
 
@@ -83,14 +87,14 @@ h2::after {
   display: block;
   width: 760px;
   height: 3px;
-  background-color: var(--solarpunk-blue);
+  background-color: var(--solarpunk-green);
   margin-top: 5px;
   left: 0;
 }
 
 h3 {
   font-size: 2rem;
-  color: var(--brutalist-yellow);
+  color: var(--solarpunk-yellow);
   text-align: center;
 }
 
