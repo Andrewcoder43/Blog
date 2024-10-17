@@ -1,33 +1,22 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { BlogContext } from './BlogProvider';
 
-const stripHtml = (html) => {
-    const tmp = document.createElement("DIV");
-    tmp.innerHTML = html;
-    return tmp.textContent || tmp.innerText || "";
-}
-
-const Blog = () => {
-    const { blogs, loading, error } = useContext(BlogContext);
+const BlogPage = () => {
+    const { blogs, isLoading, error } = useContext(BlogContext);
     const [currentPage, setCurrentPage] = useState(1);
-    const postsPerPage = 4;
+    const blogsPerPage = 4;
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error.message}</div>;
 
-    const totalPages = Math.ceil(blogs.length / postsPerPage);
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = blogs.slice(indexOfFirstPost, indexOfLastPost);
+    const totalPages = Math.ceil(blogs.length / blogsPerPage);
+    const startIndex = (currentPage - 1) * blogsPerPage;
+    const endIndex = startIndex + blogsPerPage;
+    const visibleBlogs = blogs.slice(startIndex, endIndex);
 
-    const nextPage = () => {
-        setCurrentPage(prev => Math.min(prev + 1, totalPages));
-    };
-
-    const prevPage = () => {
-        setCurrentPage(prev => Math.max(prev - 1, 1));
+    const handlePageChange = (newPage) => {
+        setCurrentPage(Math.max(1, Math.min(newPage, totalPages)));
     };
 
     return (
@@ -36,32 +25,44 @@ const Blog = () => {
             <div className="underline"></div>
             <div className="blog-thumbnails-container">
                 <div className="blog-grid">
-                    {currentPosts.map(post => (
-                        <div key={post.id} className="blog-thumbnail">
-                            <img src={post.image} alt={post.title} />
-                            <h3>{post.title}</h3>
+                    {visibleBlogs.map((blog) => (
+                        <div key={blog.id} className="blog-thumbnail">
+                            <img src={blog.image} alt={blog.title} />
+                            <h3>{blog.title}</h3>
                             <p className="post-info">
-                                <span className="author">{post.author}</span>
+                                <span className="author">{blog.author}</span>
                                 <span className="separator"> - </span>
-                                <span className="date">{post.date}</span>
+                                <span className="date">{blog.date}</span>
                             </p>
                             <p className="post-excerpt">
-                                {stripHtml(post.post).substring(0, 100)}...
+                                {blog.post.substring(0, 100)}...
                             </p>
                             <div className="button-container">
-                                <button className="category-button">{post.category}</button>
-                                <Link to={`/blog/${post.id}`} className="read-more-button">Read More</Link>
+                                <Link
+                                    to={`/blog/${blog.id}`}
+                                    className="read-more-button"
+                                >
+                                    Read More
+                                </Link>
                             </div>
                         </div>
                     ))}
                 </div>
                 <div className="pagination">
-                    <button onClick={prevPage} disabled={currentPage === 1}>
-                        <FaArrowLeft />
+                    <button
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                    >
+                        Prev
                     </button>
-                    <span>{currentPage} of {totalPages}</span>
-                    <button onClick={nextPage} disabled={currentPage === totalPages}>
-                        <FaArrowRight />
+                    <span>
+                        {currentPage} of {totalPages}
+                    </span>
+                    <button
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                    >
+                        Next
                     </button>
                 </div>
             </div>
@@ -69,4 +70,7 @@ const Blog = () => {
     );
 };
 
-export default Blog;
+export default BlogPage;
+
+
+

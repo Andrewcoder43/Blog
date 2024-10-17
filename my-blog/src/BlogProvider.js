@@ -91,6 +91,7 @@ export const BlogProvider = ({ children }) => {
                 await new Promise(resolve => setTimeout(resolve, 1000));
                 setBlogs(mockBlogData);
             } catch (err) {
+                console.error('Failed to fetch blogs:', err);
                 setError('Failed to fetch blogs');
             } finally {
                 setLoading(false);
@@ -98,12 +99,11 @@ export const BlogProvider = ({ children }) => {
         };
 
         fetchBlogs();
-    }, []);
+    }, []); // Add an empty dependency array
 
     return (
         <BlogContext.Provider value={{ blogs, loading, error }}>
             {children}
         </BlogContext.Provider>
-        
     );
-}
+};

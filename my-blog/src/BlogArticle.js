@@ -5,28 +5,25 @@ import CommentSection from './CommentSection';
 
 const BlogArticle = () => {
     const { id } = useParams();
-    const { blogs, loading, error } = useContext(BlogContext);
+    const { blogs, isLoading, error } = useContext(BlogContext);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error.message}</div>;
 
-    const blog = blogs.find(blog => blog.id === parseInt(id));
-
-    if (!blog) return <div>Blog not found</div>;
-    console.log('Blogs in BlogArticle:', blogs);
+    const currentBlog = blogs.find(blog => blog.id === parseInt(id));
+    if (!currentBlog) return <div>Blog not found</div>;
 
     return (
         <article className="blog-article">
-            <h1>{blog.title}</h1>
-            <img src={blog.image} alt={blog.title} className="blog-image" />
+            <h1>{currentBlog.title}</h1>
+            <img src={currentBlog.image} alt={currentBlog.title} className="blog-image" />
             <p className="post-info">
-                <span className="author">{blog.author}</span>
+                <span className="author">{currentBlog.author}</span>
                 <span className="separator"> - </span>
-                <span className="date">{blog.date}</span>
+                <span className="date">{currentBlog.date}</span>
             </p>
-            <div dangerouslySetInnerHTML={{ __html: blog.post }} />
-            <CommentSection blogId={blog.id} />
-            console.log('Current Blog ID:', blog.id);
+            <div dangerouslySetInnerHTML={{ __html: currentBlog.post }} />
+            <CommentSection blogId={currentBlog.id} />
         </article>
     );
 };

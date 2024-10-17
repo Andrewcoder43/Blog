@@ -3,43 +3,41 @@ import { useUser } from './UserContext';
 import './App.css';
 
 const CommentSection = ({ blogId }) => {
-    const [comments, setComments] = useState([]);
-    const [newComment, setNewComment] = useState('');
+    const [commentList, setCommentList] = useState([]);
+    const [newCommentText, setNewCommentText] = useState('');
     const { user } = useUser();
 
     useEffect(() => {
-        // Retrieve comments from localStorage
         const storedComments = localStorage.getItem(`comments_${blogId}`);
         if (storedComments) {
-            setComments(JSON.parse(storedComments));
+            setCommentList(JSON.parse(storedComments));
         } else {
-            // If no stored comments, use the sample comment
             const initialComments = [
-                { 
-                    id: 1, 
-                    text: 'This is a sample comment for blog post ' + blogId, 
+                {
+                    id: 1,
+                    text: `This is a sample comment for blog post ${blogId}`,
                     author: 'John Doe',
                     date: new Date(2023, 9, 15).toISOString()
                 }
             ];
-            setComments(initialComments);
+            setCommentList(initialComments);
             localStorage.setItem(`comments_${blogId}`, JSON.stringify(initialComments));
         }
     }, [blogId]);
 
     const handleSubmitComment = (e) => {
         e.preventDefault();
-        if (newComment.trim() && user) {
-            const comment = {
+        if (newCommentText.trim() && user) {
+            const newComment = {
                 id: Date.now(),
-                text: newComment,
+                text: newCommentText,
                 author: user.username,
                 date: new Date().toISOString()
             };
-            const updatedComments = [...comments, comment];
-            setComments(updatedComments);
+            const updatedComments = [...commentList, newComment];
+            setCommentList(updatedComments);
             localStorage.setItem(`comments_${blogId}`, JSON.stringify(updatedComments));
-            setNewComment('');
+            setNewCommentText('');
         }
     };
 
@@ -54,8 +52,8 @@ const CommentSection = ({ blogId }) => {
             {user ? (
                 <form onSubmit={handleSubmitComment}>
                     <textarea
-                        value={newComment}
-                        onChange={(e) => setNewComment(e.target.value)}
+                        value={newCommentText}
+                        onChange={(e) => setNewCommentText(e.target.value)}
                         placeholder="Add a comment..."
                     />
                     <button type="submit">Post Comment</button>
@@ -64,7 +62,7 @@ const CommentSection = ({ blogId }) => {
                 <p>Please log in to post a comment.</p>
             )}
             <div className="comments-list">
-                {comments.map(comment => (
+                {commentList.map(comment => (
                     <div key={comment.id} className="comment">
                         <div className="comment-header">
                             <div className="comment-info">

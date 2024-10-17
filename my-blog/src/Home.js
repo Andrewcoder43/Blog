@@ -75,46 +75,55 @@ const latestPosts = [
 
 
 const Home = () => {
+    const trendingArticlesSection = (
+        <section className="trending-articles-section">
+            <h2>Trending Articles</h2>
+            <div className="trending-articles-grid">
+                {trendingArticles.map(({ id, image, title, author, post, date }) => (
+                    <article key={id} className="trending-article">
+                        <img src={image} alt={title} />
+                        <div className="trending-article-content">
+                            <h3>{title}</h3>
+                            <p className="article-info">
+                                <span className="author">{author}</span>
+                                <span className="separator"> - </span>
+                                <span className="date">{date}</span>
+                            </p>
+                            <p className="article-excerpt">{post.substring(0, 100)}...</p>
+                            <Link to={`/blog/${id}`}>Read More</Link>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </section>
+    );
+
+    const latestPostsSection = (
+        <section className="latest-posts-section">
+            <h2>Latest Posts</h2>
+            <div className="latest-posts-grid">
+                {latestPosts.map(({ id, image, title, category, post, date }) => (
+                    <article key={id} className="latest-post">
+                        <img src={image} alt={title} />
+                        <div className="latest-post-content">
+                            <h3>{title}</h3>
+                            <p className="post-info">
+                                <span className="category">{category}</span>
+                                <span className="date">Published on: {date}</span>
+                            </p>
+                            <p className="post-excerpt">{post.substring(0, 100)}...</p>
+                            <Link to={`/blog/${id}`}>Read More</Link>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </section>
+    );
+
     return (
         <div className="home-container">
-            <section className="trending-section">
-                <h2>Trending</h2>
-                <div className="trending-articles">
-                    {trendingArticles.map(article => (
-                        <div key={article.id} className="trending-article">
-                            <img src={article.image} alt={article.title} />
-                            <h3>{article.title}</h3>
-                            <p className="article-info">
-                                <span className="author">{article.author}</span>
-                                <span className="separator"> - </span>
-                                <span className="date">{article.date}</span>
-                            </p>
-                            <p className="article-excerpt">{article.post.substring(0, 100)}...</p>
-                            <Link to={`/blog/${article.id}`}>Read More</Link>
-                        </div>
-                    ))}
-                </div>
-            </section>
-    
-            <section className="latest-posts-section">
-                <h2>Latest Posts</h2>
-                <div className="latest-posts">
-                    {latestPosts.map(post => (
-                        <div key={post.id} className="latest-post">
-                            <img src={post.image} alt={post.title} />
-                            <div className="post-content">
-                                <h3>{post.title}</h3>
-                                <p className="post-info">
-                                    <span className="category">{post.category}</span>
-                                    <span className="date">Published on: {post.date}</span>
-                                </p>
-                                <p className="post-excerpt">{post.post.substring(0, 100)}...</p>
-                                <Link to={`/blog/${post.id}`}>Read More</Link>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
+            {trendingArticlesSection}
+            {latestPostsSection}
         </div>
     );
 };
