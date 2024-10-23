@@ -1,14 +1,21 @@
 import React from 'react';
+import './App.css';
 
 const categories = ['All', 'Science', 'Technology', 'Environment', 'Health', 'Culture'];
 
 function Filter({ onFilterChange }) {
     return (
-        <select onChange={(e) => onFilterChange(e.target.value)}>
+        <div className="filter-container">
             {categories.map(category => (
-                <option key={category} value={category}>{category}</option>
+                <button
+                    key={category}
+                    className="filter-button"
+                    onClick={() => onFilterChange(category)}
+                >
+                    {category}
+                </button>
             ))}
-        </select>
+        </div>
     );
 }
 
