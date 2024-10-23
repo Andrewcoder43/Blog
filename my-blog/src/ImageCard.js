@@ -1,11 +1,11 @@
+// src/ImageCard.js
 import React from 'react';
 
-function ImageCard({ item }) {
+function ImageCard({ item, onClick }) {
     return (
-        <div className="image-card">
-            <img src={item.image} alt={item.title} />
-            <h3>{item.title}</h3>
-            <p>{item.category}</p>
+        <div className="image-card" onClick={onClick}>
+            <img src={item.image} alt={item.category} />
+            {/* Optionally remove title or add it back if needed */}
         </div>
     );
 }

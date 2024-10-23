@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import Filter from './Filter';
 import ImageCard from './ImageCard';
 import './App.css';
@@ -7,102 +8,99 @@ const data = [
     {
         id: 1,
         category: 'Quality of Life',
-        image: '/images/46-africa-life-expectancy.png',
-        title: 'Africa Life Expectancy',
+        image: '/image/46-africa-life-expectancy.png', // Corrected path
     },
     {
         id: 2,
         category: 'Society & Community',
-        image: '/images/64-billions-more-internet-access.png',
-        title: 'Billions More Internet Access',
+        image: '/image/64-billions-more-internet-access.png', // Corrected path
     },
     {
         id: 3,
         category: 'Women & Girls',
-        image: '/images/88-justice-for-rape.png',
-        title: 'Justice for Rape Victims',
+        image: '/image/88-justice-for-rape.png', // Corrected path
     },
     {
         id: 4,
         category: 'Clean Energy',
-        image: '/images/255-geothermal-electricity.png',
-        title: 'Geothermal Electricity',
+        image: '/image/255-geothermal-electricity.png', // Corrected path
     },
     {
         id: 5,
         category: 'Quality of Life',
-        image: '/images/353-new-african-passport.png',
-        title: 'New African Passport',
+        image: '/image/353-new-african-passport.png', // Corrected path
     },
     {
         id: 6,
         category: 'Society & Community',
-        image: '/images/428-us-child-poverty.png',
-        title: 'US Child Poverty',
+        image: '/image/428-us-child-poverty.png', // Corrected path
     },
     {
         id: 7,
         category: 'Nature & Animals',
-        image: '/images/441-land-protected.png',
-        title: 'Land Protected',
+        image: '/image/441-land-protected.png', // Corrected path
     },
     {
         id: 8,
         category: 'Health',
-        image: '/images/517-tuberculosis-deaths-falling.png',
-        title: 'Tuberculosis Deaths Falling',
+        image: '/image/517-tuberculosis-deaths-falling.png', // Corrected path
     },
     {
         id: 9,
         category: 'Clean Energy',
-        image: '/images/576-us-renewables-pledges.png',
-        title: 'US Renewables Pledges',
+        image: '/image/576-us-renewables-pledges.png', // Corrected path
     },
     {
         id: 10,
         category: 'Health',
-        image: '/images/1110-tb-curable.png',
-        title: 'TB Curable',
+        image: '/image/1110-tb-curable.png', // Corrected path
     },
     {
         id: 11,
-        category: 'Eco & Climate',
-        image: '/images/1159-bee-friendly-insecticide.png',
-        title: 'Bee-Friendly Insecticide',
+        category: 'Misc', // Changed from Eco & Climate to Misc
+        image: '/image/1159-bee-friendly-insecticide.png', // Corrected path
     },
     {
         id: 12,
-        category: 'Recycling & Waste Management', // Assuming this aligns with your categories
-        image: '/images/1181-us-recycling.png',
-        title: 'US Recycling Efforts',
+        category: 'Misc', // Changed from Recycling & Waste Management to Misc
+        image: '/image/1181-us-recycling.png', // Corrected path
     },
     {
         id: 13,
-        category: 'Health', // Assuming this aligns with your categories
-        image: '/images/1228-children-pneumonia.png',
-        title: 'Children Pneumonia Awareness',
+        category: 'Health', // This is acceptable
+        image: '/image/1228-children-pneumonia.png', // Corrected path
     },
 ];
 
 function Grid() {
-    const [selectedCategory, setSelectedCategory] = useState('All');
+    const [selectedCategory, setSelectedCategory] = useState(null); // Start with no selection
+
+    const navigate = useNavigate(); // Initialize navigate
 
     const handleFilterChange = (category) => {
         setSelectedCategory(category);
     };
 
-    const filteredData = selectedCategory === 'All'
+    const filteredData = !selectedCategory || selectedCategory === 'All'
         ? data
         : data.filter(item => item.category === selectedCategory);
+
+    const handleImageClick = (id) => {
+      navigate(`/blog/${id}`); // Navigate to the blog article using the ID
+    };
 
     return (
         <div className="grid-container">
             <div className="filter-grid">
-                <Filter onFilterChange={handleFilterChange} />
+                <Filter selectedCategory={selectedCategory} onFilterChange={handleFilterChange} />
             </div>
             <div className="image-grid">
                 {filteredData.map(item => (
-                    <ImageCard key={item.id} item={item} />
+                    <ImageCard 
+                        key={item.id} 
+                        item={item} 
+                        onClick={() => handleImageClick(item.id)} // Directly navigate on click
+                    />
                 ))}
             </div>
         </div>
