@@ -858,6 +858,26 @@ button.post-comment-btn {
   width: 100%;
 }
 
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter-grid {
+  display: flex; /* Change to flexbox for centering */
+  justify-content: center; /* Center the buttons horizontally */
+  flex-wrap: wrap; /* Allow buttons to wrap to the next line if needed */
+  gap: 10px; /* Space between buttons */
+  margin-bottom: 20px; /* Space between filter and image grid */
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four images per row */
+  gap: 10px;
+  width: 100%; /* Ensure it takes full width */
+}
 
 
 .filter-container {
