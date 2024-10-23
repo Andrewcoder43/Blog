@@ -19,6 +19,20 @@ const BlogPage = () => {
         setCurrentPage(Math.max(1, Math.min(newPage, totalPages)));
     };
 
+    // Function to strip HTML tags
+    const stripHtml = (html) => {
+        const tmp = document.createElement("DIV");
+        tmp.innerHTML = html;
+        return tmp.textContent || tmp.innerText || "";
+    };
+
+    // Function to get excerpt
+    const getExcerpt = (content, maxLength = 100) => {
+        const strippedContent = stripHtml(content);
+        if (strippedContent.length <= maxLength) return strippedContent;
+        return strippedContent.substr(0, maxLength) + '...';
+    };
+
     return (
         <div className="blog-page">
             <h1 className="blog-header">Blog</h1>
@@ -35,7 +49,7 @@ const BlogPage = () => {
                                 <span className="date">{blog.date}</span>
                             </p>
                             <p className="post-excerpt">
-                                {blog.post.substring(0, 100)}...
+                                {getExcerpt(blog.post)}
                             </p>
                             <div className="button-container">
                                 <Link
@@ -71,6 +85,3 @@ const BlogPage = () => {
 };
 
 export default BlogPage;
-
-
-
