@@ -8,8 +8,8 @@ import Blog from './Blog';
 import BlogArticle from './BlogArticle';
 import SignUp from './SignUp';
 import Login from './Login';
+import Grid from './Grid';
 import './App.css';
-
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About</Link></li>
               <li><Link to="/blog">Blog</Link></li>
+              <li><Link to="/grid">Grid</Link></li> {/* Added link for Grid */}
               <li><Link to="/login">Login</Link></li>
             </ul>
           </nav>
@@ -33,6 +34,7 @@ function App() {
               <Route path="/blog/:id" element={<BlogArticle />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/grid" element={<Grid />} /> {/* Added route for Grid */}
             </Routes>
           </main>
         </div>

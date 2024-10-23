@@ -838,3 +838,22 @@ button.post-comment-btn {
   justify-content: center;
 }
 
+
+
+
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.grid-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.grid-item img {
+  width: 100%;
+}
