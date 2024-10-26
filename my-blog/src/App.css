@@ -317,9 +317,7 @@ button {
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  
-  /* Optional minimum height for better layout */
-  min-height: 300px; 
+  min-height: 300px; /* Set a minimum height to accommodate title and other content */
 }
 
 .blog-thumbnail:hover {
@@ -327,18 +325,22 @@ button {
 }
 
 .blog-thumbnail img {
-  width: 100%;
+  width: 100%; /* Make the image responsive */
   height: auto; /* Maintain aspect ratio */
-  max-height: 200px; /* Set max height to prevent excessive growth */
-  object-fit: cover; /* Ensure the image covers the area */
-  object-position: center; /* Center the image */
+  max-height: 400px; /* Set a maximum height to prevent excessive growth */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
 }
 
 .blog-thumbnail h3 {
   color: var(--solarpunk-dark);
   margin-bottom: 5px;
   font-size: 1.2rem;
-  padding: 15px;
+  padding: 15px 15px 0;
+}
+
+.blog-container {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
 }
 
 
@@ -491,10 +493,9 @@ button {
 
 
 .blog-image {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  margin-bottom: 20px;
+  width: 100%; /* Make the image responsive */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove any inline spacing */
 }
 
 .post-info {
@@ -758,51 +759,6 @@ button.post-comment-btn {
 }
 
 
-
-.similar-articles {
-  margin-top: 2rem;
-}
-
-.similar-articles h2 {
-  margin-bottom: 1rem;
-}
-
-.similar-articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.similar-article {
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  padding: 1rem;
-}
-
-.similar-article-image {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 5px;
-  margin-bottom: 0.5rem;
-}
-
-.similar-article h3 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.similar-article p {
-  font-size: 0.8rem;
-  color: #666;
-}
-
-
-
-
-
-
-
 .share-buttons {
   margin: 20px 0;
   text-align: center; /* Center the content */
@@ -845,12 +801,13 @@ img {
 }
 
 .grid-item {
-  border: 1px solid #ccc;
-  padding: 10px;
+  overflow: hidden;
+  position: relative;
 }
 
 .grid-item img {
   width: 100%;
+  height: auto;
 }
 
 /* General styles for the grid container */
@@ -860,6 +817,9 @@ img {
   align-items: center;
   padding: 20px; /* Add some padding around the container */
 }
+
+
+
 
 /* Styles for the filter section */
 .filter-grid {
@@ -871,8 +831,12 @@ img {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Four images per row */
   gap: 0; /* No space between grid items */
-  width: 100%; /* Ensure it takes full width */
 }
+
+
+
+
+
 
 /* Styles for each image card */
 .image-card {

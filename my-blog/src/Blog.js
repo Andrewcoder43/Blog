@@ -1,16 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BlogContext } from './BlogProvider';
-import './App.css';
-
 
 const BlogPage = () => {
-    const { blogs, isLoading, error } = useContext(BlogContext);
+    const { blogs, loading, error } = useContext(BlogContext); // Changed isLoading to loading
     const [currentPage, setCurrentPage] = useState(1);
     const blogsPerPage = 4;
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
+    // Loading and error states
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error}</div>; // Changed error.message to error
 
     const totalPages = Math.ceil(blogs.length / blogsPerPage);
     const startIndex = (currentPage - 1) * blogsPerPage;
@@ -31,8 +30,9 @@ const BlogPage = () => {
     // Function to get excerpt
     const getExcerpt = (content, maxLength = 100) => {
         const strippedContent = stripHtml(content);
-        if (strippedContent.length <= maxLength) return strippedContent;
-        return strippedContent.substr(0, maxLength) + '...';
+        return strippedContent.length <= maxLength 
+            ? strippedContent 
+            : `${strippedContent.substr(0, maxLength)}...`;
     };
 
     return (
